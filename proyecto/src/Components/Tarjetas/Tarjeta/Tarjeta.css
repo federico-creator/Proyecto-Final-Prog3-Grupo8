@@ -2,3 +2,17 @@
     width: 100px;
     height: 100px;
 }
+.ocultar{
+    display: none;
+}
+.mostrar{
+    display: block;
+}
+
+.viewmore{
+    color: blue;
+}
+.viewmore:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
