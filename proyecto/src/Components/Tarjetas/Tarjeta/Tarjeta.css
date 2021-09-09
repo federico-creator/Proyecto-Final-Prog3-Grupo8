@@ -28,3 +28,10 @@
     background-color: aqua;
     min-height: 700px;
 }
+.borrar{
+    color: red;
+}
+.borrar:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
