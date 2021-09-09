@@ -16,3 +16,10 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.borrar{
+    color: red;
+}
+.borrar:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

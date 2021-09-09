@@ -6,7 +6,10 @@ class Tarjetas extends Component{
     constructor(){
         super()
         this.state={
-            info: []
+            peliculas: [],
+            peliculasOriginales:[],
+            peliculasEnExposición: [],
+            peliculasBorradas:[]
         }
     }
 
@@ -14,29 +17,56 @@ class Tarjetas extends Component{
         fetch('https://api.themoviedb.org/3/movie/popular?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US&page=1')
             .then( response => response.json())
             .then( data  => {
-                console.log(data)
                 this.setState({
-                info: data.results
+                peliculas: data.results,
+                peliculasOriginales: data.results
             })})
             .catch( error => console.log(error));
     }
+
+    borrarPelicula(id){
+        let buenas = this.state.peliculas.filter(pelicula => pelicula.id !== id)
+        this.setState({
+            peliculas: buenas,
+            peliculasBorradas: this.state.peliculasBorradas.concat(id) 
+        })
+    }
+
+    resetOriginales(){
+        this.setState({
+            peliculas: this.state.peliculasOriginales
+        })
+    }
+
+    resetBorrados(){
+        this.state.peliculasBorradas.map(pelicula => (
+           fetch (`https://api.themoviedb.org/3/movie/${pelicula}?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US`)
+           .then (respuesta => respuesta.json())
+           .then (data => {
+               this.setState({
+                   peliculas: this.state.peliculas.concat(data),
+                   peliculasBorradas: []
+
+               }) 
+           })
+           .catch(error => console.log(error))
+       )) 
+   }
+
     render(){
         
         return(
             <>
-
-                <h1>parte de tarjetas</h1>
-                
-
                 <div>
-                    { this.state.info.map((character) => 
+                    { this.state.peliculas.map((character) => 
                     <Tarjeta 
                     caracteristicas = {character}
-                    key={ character.id} /> )}
-
+                    key={ character.id} 
+                    borrarPelicula={(id) => this.borrarPelicula(id)}/> )}
                 </div>
 
-
+                <button onClick={() => this.resetOriginales()}>Reset Originales</button>
+                <button onClick={() => this.resetBorrados()}>Reset Borrados</button>
 
             </>
         )

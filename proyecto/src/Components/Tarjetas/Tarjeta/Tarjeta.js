@@ -25,10 +25,10 @@ class Tarjeta extends Component {
     }
 
     render(){
-        console.log(this.props.caracteristicas);
-        const{ title, overview, poster_path, vote_average, adult } = this.props.caracteristicas
+        const{ title, overview, poster_path, vote_average, adult, id } = this.props.caracteristicas
         return (
             <div>
+                <p className="borrar" onClick={()=> this.props.borrarPelicula(id)}>borrar</p>
                 <img className='imagen' src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={poster_path} />
                 <h1>{title}</h1>
                 <div className={`${this.state.verMas ? 'mostrar' : 'ocultar'}`}>
