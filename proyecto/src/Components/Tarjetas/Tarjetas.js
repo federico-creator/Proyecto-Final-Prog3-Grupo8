@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import Tarjeta from './Tarjeta/Tarjeta'
-
+import "./Tarjetas.css"
 class Tarjetas extends Component{
 
     constructor(){
@@ -28,7 +28,7 @@ class Tarjetas extends Component{
                 <h1>parte de tarjetas</h1>
                 
 
-                <div>
+                <div className="movie">
                     { this.state.info.map((character) => 
                     <Tarjeta 
                     caracteristicas = {character}

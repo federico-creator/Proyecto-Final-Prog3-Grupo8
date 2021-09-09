@@ -28,7 +28,7 @@ class Tarjeta extends Component {
         console.log(this.props.caracteristicas);
         const{ title, overview, poster_path, vote_average, adult } = this.props.caracteristicas
         return (
-            <div>
+            <div className="tarjeta">
                 <img className='imagen' src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={poster_path} />
                 <h1>{title}</h1>
                 <div className={`${this.state.verMas ? 'mostrar' : 'ocultar'}`}>

@@ -1,6 +1,7 @@
 .imagen{
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
+    
 }
 .ocultar{
     display: none;
@@ -11,8 +12,19 @@
 
 .viewmore{
     color: blue;
+    
 }
 .viewmore:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+.tarjeta{
+    width: 20%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-color: gray;
+    border: solid;
+    border-width: 2px;
+    background-color: aqua;
+    min-height: 700px;
 }
