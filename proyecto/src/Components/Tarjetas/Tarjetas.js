@@ -9,7 +9,8 @@ class Tarjetas extends Component{
             peliculas: [],
             peliculasOriginales:[],
             peliculasEnExposición: [],
-            peliculasBorradas:[]
+            peliculasBorradas:[],
+            cargando: false,
         }
     }
 
@@ -18,6 +19,7 @@ class Tarjetas extends Component{
             .then( response => response.json())
             .then( data  => {
                 this.setState({
+                cargando: true,
                 peliculas: data.results,
                 peliculasOriginales: data.results
             })})
@@ -62,7 +64,10 @@ class Tarjetas extends Component{
                 
 
                 <div className="movie">
-                    { this.state.peliculas.map((character) => 
+                   {
+                        this.state.cargando === false ?
+                          <img src="https://tenor.com/view/cargando-gif-7991979"/>:  
+                        this.state.peliculas.map((character) => 
                     <Tarjeta 
                     caracteristicas = {character}
                     key={ character.id} 
