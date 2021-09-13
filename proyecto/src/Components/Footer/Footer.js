@@ -6,9 +6,9 @@ function Footer() {
     return (
         <footer>
         <ul class="team">
-            <li>Nombre integrante 1</li>
-            <li>Nombre integrante 2</li>
-            <li>Nombre integrante 3</li>
+            <li>Federico Bornico</li>
+            <li>Isaac Yoon</li>
+            <li>Nicolas Bellomo</li>
         </ul>
     </footer>
    
