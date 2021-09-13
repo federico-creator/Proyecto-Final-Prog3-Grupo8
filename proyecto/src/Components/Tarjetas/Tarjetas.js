@@ -6,6 +6,7 @@ class Tarjetas extends Component{
     constructor(){
         super()
         this.state={
+            pagina: 1,
             peliculas: [],
             peliculasOriginales:[],
             peliculasEnExposición: [],
@@ -15,13 +16,14 @@ class Tarjetas extends Component{
     }
 
     componentDidMount(){
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US&page=1')
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US&page=${this.state.pagina}`)
             .then( response => response.json())
             .then( data  => {
                 this.setState({
                 cargando: true,
                 peliculas: data.results,
-                peliculasOriginales: data.results
+                peliculasOriginales: data.results,
+                pagina: this.state.pagina + 1
             })})
             .catch( error => console.log(error));
     }
@@ -36,7 +38,8 @@ class Tarjetas extends Component{
 
     resetOriginales(){
         this.setState({
-            peliculas: this.state.peliculasOriginales
+            peliculas: this.state.peliculasOriginales,
+            pagina: 2
         })
     }
 
@@ -53,6 +56,18 @@ class Tarjetas extends Component{
            })
            .catch(error => console.log(error))
        )) 
+   }
+
+   verMas(){
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US&page=${this.state.pagina}`)
+    .then( response => response.json())
+    .then( data  => {
+        this.setState({
+        cargando: true,
+        peliculas: this.state.peliculas.concat(data.results),
+        pagina: this.state.pagina + 1
+    })})
+    .catch( error => console.log(error));
    }
 
     render(){
@@ -74,9 +89,10 @@ class Tarjetas extends Component{
                     borrarPelicula={(id) => this.borrarPelicula(id)}/> )}
                 </div>
 
+                <button onClick={()=>this.verMas()} >Mas peliculas</button>
                 <button onClick={() => this.resetOriginales()}>Reset Originales</button>
                 <button onClick={() => this.resetBorrados()}>Reset Borrados</button>
-
+                
             </>
         )
     }
