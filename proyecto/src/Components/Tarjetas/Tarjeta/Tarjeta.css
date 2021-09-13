@@ -3,15 +3,31 @@
     height: 100%;
     
 }
+.imagen2{
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+.titulo{
+    display: flex;
+    align-items: center;
+    
+}
 .ocultar{
     display: none;
 }
 .mostrar{
     display: block;
+    width: 80%;
+    display: flex;
+    align-items: center;
 }
+
 
 .viewmore{
     color: blue;
+    display: flex;
+    align-items: center;
     
 }
 .viewmore:hover {
@@ -28,10 +44,33 @@
     background-color: aqua;
     min-height: 700px;
 }
+.tarjeta2{
+    width: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-color: gray;
+    border: solid;
+    border-width: 2px;
+    background-color: whitesmoke;
+    height: 450px;
+    display: flex;
+    margin-left: 10px;
+    
+}
 .borrar{
     color: red;
 }
 .borrar:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.borrar2{
+    display: flex;
+    align-items: flex-end;
+    color: red;
+}
+
+.borrar2:hover {
     text-decoration: underline;
     cursor: pointer;
 }

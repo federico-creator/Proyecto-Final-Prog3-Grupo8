@@ -78,7 +78,7 @@ class Tarjetas extends Component{
                 <h1>parte de tarjetas</h1>
                 
 
-                <div className="movie">
+                <div className="lista">
                    {
                         this.state.cargando === false ?
                           <img src="https://tenor.com/view/cargando-gif-7991979"/>:  
