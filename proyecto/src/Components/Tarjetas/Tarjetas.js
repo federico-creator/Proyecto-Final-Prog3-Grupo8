@@ -3,8 +3,8 @@ import Tarjeta from './Tarjeta/Tarjeta'
 import "./Tarjetas.css"
 class Tarjetas extends Component{
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             pagina: 1,
             peliculas: [],
@@ -12,6 +12,7 @@ class Tarjetas extends Component{
             peliculasEnExposición: [],
             peliculasBorradas:[],
             cargando: false,
+            display: props.display
         }
     }
 
@@ -71,6 +72,7 @@ class Tarjetas extends Component{
    }
 
     render(){
+     console.log(this.state.display);
         
         return(
             <>
@@ -82,10 +84,10 @@ class Tarjetas extends Component{
                    {
                         this.state.cargando === false ?
                           <img src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
-                        this.state.peliculas.map((character) => 
+                        this.state.peliculas.map((pelicula) => 
                     <Tarjeta 
-                    caracteristicas = {character}
-                    key={ character.id} 
+                    caracteristicas = {pelicula}
+                    key={ pelicula.id} 
                     borrarPelicula={(id) => this.borrarPelicula(id)}/> )}
                 </div>
 
