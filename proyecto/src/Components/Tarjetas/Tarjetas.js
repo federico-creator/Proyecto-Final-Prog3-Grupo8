@@ -66,7 +66,7 @@ class Tarjetas extends Component{
                 <div className="movie">
                    {
                         this.state.cargando === false ?
-                          <img src="https://tenor.com/view/cargando-gif-7991979"/>:  
+                          <img src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
                         this.state.peliculas.map((character) => 
                     <Tarjeta 
                     caracteristicas = {character}
