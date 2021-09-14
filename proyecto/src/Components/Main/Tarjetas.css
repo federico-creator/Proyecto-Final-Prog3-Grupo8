@@ -1,6 +1,11 @@
-.movie{
+/* .movie{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
+} */
+
+.lista{
+    width: 100%;
+
 }

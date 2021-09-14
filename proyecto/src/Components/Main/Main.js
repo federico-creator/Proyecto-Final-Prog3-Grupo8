@@ -116,7 +116,8 @@ class Tarjetas extends Component{
                 {this.state.peliculas == "" && this.state.cargando === true ? <h2>Lo sentimos, No hay pelicuals relacionadas con su busqueda</h2> : "" }
                 
 
-                <div className="movie" /* className={`${this.state.display == "cuadricula" ? 'true' : 'false'}`} */>
+                {/* <div className="movie" */ /* className={`${this.state.display == "cuadricula" ? 'true' : 'false'}`} */}
+                <div className="lista">
                    {
                         this.state.cargando === false ?
                           <img src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
