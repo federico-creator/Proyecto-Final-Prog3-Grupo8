@@ -1,5 +1,6 @@
 import React  from "react"
 import "./Header.css"
+import Filtrado from "../Filtrado/Filtrado"
 
 //por ahora es sin estado, seguro despues hay que cambiarlo
 function Header(props) {
@@ -11,10 +12,7 @@ function Header(props) {
             <i className="fas fa-th"onClick={()=>props.cuadriculado()}></i>
             <br></br>
             <i className="fas fa-align-justify" onClick={()=>props.alineado()}></i>
-            <form action="">
-                <input type="text" name="search" id="" placeholder="Search"/>
-                <button type="submit"><i className="fas fa-search"></i></button>
-            </form>
+            <Filtrado filtrar={(texto)=> props.filtrar(texto)}/>
         </section>
     </header>
    

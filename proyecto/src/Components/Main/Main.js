@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import Tarjeta from './Tarjeta/Tarjeta'
 import "./Tarjetas.css"
+import Header from "../Header/Header"
 class Tarjetas extends Component{
 
     constructor(props){
@@ -12,7 +13,7 @@ class Tarjetas extends Component{
             peliculasEnExposición: [],
             peliculasBorradas:[],
             cargando: false,
-            display: props.display
+            display: "cuadricula"
         }
     }
 
@@ -25,7 +26,9 @@ class Tarjetas extends Component{
                 peliculas: data.results,
                 peliculasOriginales: data.results,
                 pagina: this.state.pagina + 1
-            })})
+            }, ()=> this.setState({
+                peliculasActuales: this.state.peliculas })
+            )})
             .catch( error => console.log(error));
     }
 
@@ -34,14 +37,16 @@ class Tarjetas extends Component{
         this.setState({
             peliculas: buenas,
             peliculasBorradas: this.state.peliculasBorradas.concat(id) 
-        })
+        }, ()=> this.setState({
+            peliculasActuales: this.state.peliculas }))
     }
 
     resetOriginales(){
         this.setState({
             peliculas: this.state.peliculasOriginales,
             pagina: 2
-        })
+        }, ()=> this.setState({
+            peliculasActuales: this.state.peliculas }))
     }
 
     resetBorrados(){
@@ -53,13 +58,17 @@ class Tarjetas extends Component{
                    peliculas: this.state.peliculas.concat(data),
                    peliculasBorradas: []
 
-               }) 
+               }, ()=> this.setState({
+                peliculasActuales: this.state.peliculas })) 
            })
            .catch(error => console.log(error))
        )) 
    }
 
-   verMas(){
+   verMasPelis(){
+        this.setState({
+            cargando: false
+        })
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US&page=${this.state.pagina}`)
     .then( response => response.json())
     .then( data  => {
@@ -67,20 +76,47 @@ class Tarjetas extends Component{
         cargando: true,
         peliculas: this.state.peliculas.concat(data.results),
         pagina: this.state.pagina + 1
-    })})
+    }, ()=> this.setState({
+        peliculasActuales: this.state.peliculas, cargando: true }))})
     .catch( error => console.log(error));
    }
 
-    render(){
-     console.log(this.state.display);
+   Filter(texto){
+        let peliculasFiltradas = this.state.peliculasActuales.filter((pelicula) => pelicula.title.toLowerCase().includes(texto.toLowerCase()))
+         this.setState({
+            peliculas: peliculasFiltradas
+        }) 
+   }
+   cuadriculado(){
+    this.setState({
+      display: "cuadricula"
+    })
+  }
+
+  alineado(){
+    this.setState({
+      display: "lineal"
+    })
+  }
+    
+   
+   render(){
+       console.log(this.state.display);
+
         
         return(
             <>
-
+                <Header
+                cuadriculado={()=>this.cuadriculado()}
+                alineado={()=>this.alineado()}
+                filtrar={(texto)=>this.Filter(texto)}/>
+                
                 <h1>parte de tarjetas</h1>
+
+                {this.state.peliculas == "" && this.state.cargando === true ? <h2>Lo sentimos, No hay pelicuals relacionadas con su busqueda</h2> : "" }
                 
 
-                <div className="movie">
+                <div className="movie" /* className={`${this.state.display == "cuadricula" ? 'true' : 'false'}`} */>
                    {
                         this.state.cargando === false ?
                           <img src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
@@ -91,10 +127,9 @@ class Tarjetas extends Component{
                     borrarPelicula={(id) => this.borrarPelicula(id)}/> )}
                 </div>
 
-                <button onClick={()=>this.verMas()} >Mas peliculas</button>
+                <button onClick={()=>this.verMasPelis()} >Mas peliculas</button>
                 <button onClick={() => this.resetOriginales()}>Reset Originales</button>
                 <button onClick={() => this.resetBorrados()}>Reset Borrados</button>
-                
             </>
         )
     }
