@@ -98,6 +98,34 @@ class Tarjetas extends Component{
       display: "lineal"
     })
   }
+
+  ascendente(){
+      let filtradas= []
+      let pelicualasAscendentes = this.state.peliculas.map((pelicula)=>pelicula.title)
+      pelicualasAscendentes.sort()
+      pelicualasAscendentes.map((pelicula)=>(
+        filtradas= filtradas.concat(this.state.peliculas.filter((peliculas) => peliculas.title.includes(pelicula)))
+      ))
+    this.setState({
+        peliculas:filtradas
+    },()=> this.setState({
+        peliculasActuales: this.state.peliculas}))
+  }
+
+  descendente(){
+    let filtradas= []
+    let pelicualasAscendentes = this.state.peliculas.map((pelicula)=>pelicula.title)
+    pelicualasAscendentes.sort()
+    pelicualasAscendentes.reverse()
+    pelicualasAscendentes.map((pelicula)=>(
+      filtradas= filtradas.concat(this.state.peliculas.filter((peliculas) => peliculas.title.includes(pelicula)))
+    ))
+  this.setState({
+      peliculas:filtradas
+  },()=> this.setState({
+      peliculasActuales: this.state.peliculas}))
+    
+}
     
    
    render(){
@@ -109,7 +137,9 @@ class Tarjetas extends Component{
                 <Header
                 cuadriculado={()=>this.cuadriculado()}
                 alineado={()=>this.alineado()}
-                filtrar={(texto)=>this.Filter(texto)}/>
+                filtrar={(texto)=>this.Filter(texto)}
+                ascendente={()=> this.ascendente()}
+                descendente={()=> this.descendente()}/>
                 
                 <h1>parte de tarjetas</h1>
 
