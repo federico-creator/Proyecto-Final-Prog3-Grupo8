@@ -8,7 +8,7 @@ function Header(props) {
         <header>
         <h1>Título/ Nombre de la app</h1>
         <section>
-            <p>Ordenar ASC/ DESC</p>
+            <p>Ordenar <span onClick={()=>props.ascendente()}>ASC</span> / <span onClick={()=>props.descendente()}>DESC</span> </p>
             <i className="fas fa-th"onClick={()=>props.cuadriculado()}></i>
             <br></br>
             <i className="fas fa-align-justify" onClick={()=>props.alineado()}></i>
