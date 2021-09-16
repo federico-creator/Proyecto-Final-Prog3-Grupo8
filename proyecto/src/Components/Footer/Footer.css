@@ -1,0 +1,39 @@
+/*.prueba{
+    background-color: black;
+}
+
+.footer {
+    display: flex;
+    height: 30px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    
+}
+
+.team {
+    display: flex;
+    margin: 100px;
+} */
+
+/*.udesa{
+    display: flex;
+    width: 100px; height: 100px;
+    align-items: center;
+    
+}*/
+.udesa{
+    width: 100px; height: 100px;
+    text-align: center;
+
+}
+
+.piedep {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    text-align: center;
+    text-decoration-color: beige;
+} 
