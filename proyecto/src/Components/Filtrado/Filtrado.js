@@ -27,7 +27,7 @@ class Filtrado extends Component{
     render(){
         console.log(this.state.personajes);
         return(
-            <form >
+            <form className="filtro">
                 <label>Filtrar Peliculas</label>
                 <input type="text" name= "name" onChange={(e)=>this.cambios(e)} value={this.state.filter}  />
             </form> 

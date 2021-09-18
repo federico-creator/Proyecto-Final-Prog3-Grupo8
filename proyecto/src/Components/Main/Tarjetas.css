@@ -3,9 +3,19 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
+    background-color: black;
 }
 
 .lista{
     width: 100%;
-
+    background-color: black;
+}
+.titulo2{
+    color: black;
+    background-color: yellow;
+}
+.botones{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: black;
 }

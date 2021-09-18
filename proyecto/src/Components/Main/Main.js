@@ -141,7 +141,7 @@ class Tarjetas extends Component{
                 ascendente={()=> this.ascendente()}
                 descendente={()=> this.descendente()}/>
                 
-                <h1>parte de tarjetas</h1>
+                <h1 className="titulo2">Peliculas</h1>
 
                 {this.state.peliculas == "" && this.state.cargando === true ? <h2>Lo sentimos, No hay pelicuals relacionadas con su busqueda</h2> : "" }
                 
@@ -159,9 +159,11 @@ class Tarjetas extends Component{
                     borrarPelicula={(id) => this.borrarPelicula(id)}/> )}
                 </div>
 
+                <div className="botones">
                 <button onClick={()=>this.verMasPelis()} >Mas peliculas</button>
                 <button onClick={() => this.resetOriginales()}>Reset Originales</button>
                 <button onClick={() => this.resetBorrados()}>Reset Borrados</button>
+                </div>
             </>
         )
     }

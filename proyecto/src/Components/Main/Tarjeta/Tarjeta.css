@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     
+    
 }
 .ocultar{
     display: none;
@@ -23,7 +24,7 @@
 
 
 .viewmore{
-    color: blue;
+    color: yellow;
     display: flex;
     align-items: center;
     
@@ -34,22 +35,22 @@
 }
 .tarjeta{
     width: 20%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding:20px;
+    margin-bottom: 5px;
     border-color: gray;
     border: solid;
     border-width: 2px;
-    background-color: aqua;
+    background-color: gray;
     min-height: 700px;
 }
 .tarjeta2{
     width: auto;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border-color: gray;
     border: solid;
     border-width: 2px;
-    background-color: whitesmoke;
+    background-color: gray;
     height: 450px;
     display: flex;
     margin-left: 10px;
