@@ -10,7 +10,7 @@ class Tarjetas extends Component{
             pagina: 1,
             peliculas: [],
             peliculasOriginales:[],
-            peliculasEnExposición: [],
+            peliculasActuales: [],
             peliculasBorradas:[],
             cargando: false,
             display: "cuadricula"

@@ -11,7 +11,7 @@ class Filtrado extends Component{
         }
     }
 
-     enviarSubmit(e){
+     evitarSubmit(e){
         e.preventDefault()
     }
 
@@ -27,7 +27,7 @@ class Filtrado extends Component{
     render(){
         console.log(this.state.personajes);
         return(
-            <form >
+            <form onChange={(e)=>this.evitarSubmit(e)} >
                 <label>Filtrar Peliculas</label>
                 <input type="text" name= "name" onChange={(e)=>this.cambios(e)} value={this.state.filter}  />
             </form> 
