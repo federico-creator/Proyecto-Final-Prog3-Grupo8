@@ -6,9 +6,9 @@ import Filtrado from "../Filtrado/Filtrado"
 function Header(props) {
     return (
         <header>
-        <h1>Título/ Nombre de la app</h1>
+        <h1 className="titulo1">PopcornTime</h1>
         <section>
-            <p>Ordenar <span onClick={()=>props.ascendente()}>ASC</span> / <span onClick={()=>props.descendente()}>DESC</span> </p>
+            <p className="orden">Ordenar <span onClick={()=>props.ascendente()}>ASC</span> / <span onClick={()=>props.descendente()}>DESC</span> </p>
             <i className="fas fa-th"onClick={()=>props.cuadriculado()}></i>
             <br></br>
             <i className="fas fa-align-justify" onClick={()=>props.alineado()}></i>
