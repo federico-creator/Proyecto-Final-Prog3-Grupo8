@@ -4,8 +4,8 @@ import "./Tarjetas.css"
 import Header from "../Header/Header"
 class Tarjetas extends Component{
 
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         this.state={
             pagina: 1,
             peliculas: [],
@@ -25,10 +25,9 @@ class Tarjetas extends Component{
                 cargando: true,
                 peliculas: data.results,
                 peliculasOriginales: data.results,
-                pagina: this.state.pagina + 1
-            }, ()=> this.setState({
-                peliculasActuales: this.state.peliculas })
-            )})
+                pagina: this.state.pagina + 1,
+                peliculasActuales: data.results
+            })})
             .catch( error => console.log(error));
     }
 
@@ -44,9 +43,9 @@ class Tarjetas extends Component{
     resetOriginales(){
         this.setState({
             peliculas: this.state.peliculasOriginales,
-            pagina: 2
-        }, ()=> this.setState({
-            peliculasActuales: this.state.peliculas }))
+            pagina: 2,
+            peliculasActuales:this.state.peliculasOriginales,
+        })
     }
 
     resetBorrados(){
