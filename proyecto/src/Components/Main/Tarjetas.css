@@ -19,3 +19,47 @@
     justify-content: space-evenly;
     background-color: black;
 }
+
+.noresults{
+    background-color: black;
+    margin: 0px;
+    height: 500px;
+    color: blanchedalmond;
+    font-size: 3rem;
+}
+
+.boton{
+    background-color: black;
+    font-size: 1.6em;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    margin-top: 15px;
+}
+
+.boton:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    .boton{
+        font-size: 1rem;
+    }
+
+
+
+}
+
+@media (max-width:  426px){
+    .boton{
+        font-size: 0.5rem;   
+    }
+
+}

@@ -33,12 +33,12 @@ class Tarjetas extends Component{
     }
 
     borrarPelicula(id){
-        let buenas = this.state.peliculas.filter(pelicula => pelicula.id !== id)
+        let buenas = this.state.peliculasActuales.filter(pelicula => pelicula.id !== id)
         this.setState({
             peliculas: buenas,
-            peliculasBorradas: this.state.peliculasBorradas.concat(id) 
-        }, ()=> this.setState({
-            peliculasActuales: this.state.peliculas }))
+            peliculasBorradas: this.state.peliculasBorradas.concat(id),
+            peliculasActuales: buenas
+        })
     }
 
     resetOriginales(){
@@ -56,28 +56,24 @@ class Tarjetas extends Component{
            .then (data => {
                this.setState({
                    peliculas: this.state.peliculas.concat(data),
-                   peliculasBorradas: []
+                   peliculasBorradas: [],
+                   peliculasActuales: this.state.peliculasActuales.concat(data)
 
-               }, ()=> this.setState({
-                peliculasActuales: this.state.peliculas })) 
+               }) 
            })
            .catch(error => console.log(error))
        )) 
    }
 
    verMasPelis(){
-        this.setState({
-            cargando: false
-        })
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=a0959ac201dc94da76d17af9fee2bfd2&language=en-US&page=${this.state.pagina}`)
     .then( response => response.json())
     .then( data  => {
         this.setState({
-        cargando: true,
         peliculas: this.state.peliculas.concat(data.results),
-        pagina: this.state.pagina + 1
-    }, ()=> this.setState({
-        peliculasActuales: this.state.peliculas, cargando: true }))})
+        pagina: this.state.pagina + 1,
+        peliculasActuales: this.state.peliculasActuales.concat(data.results)
+    })})
     .catch( error => console.log(error));
    }
 
@@ -140,10 +136,7 @@ class Tarjetas extends Component{
                 filtrar={(texto)=>this.Filter(texto)}
                 ascendente={()=> this.ascendente()}
                 descendente={()=> this.descendente()}/>
-                
-                <h1 className="titulo2">Peliculas</h1>
-
-                {this.state.peliculas == "" && this.state.cargando === true ? <h2>Lo sentimos, No hay pelicuals relacionadas con su busqueda</h2> : "" }
+                {this.state.peliculas == "" && this.state.cargando === true ? <h2 className="noresults">Lo sentimos, No hay películas relacionadas con su búsqueda</h2> : "" }
                 
 
                  <div  className={`${this.state.display == "cuadricula" ? 'cuadricula' : 'lista'}`} >
@@ -160,9 +153,9 @@ class Tarjetas extends Component{
                 </div>
 
                 <div className="botones">
-                <button onClick={()=>this.verMasPelis()} >Mas peliculas</button>
-                <button onClick={() => this.resetOriginales()}>Reset Originales</button>
-                <button onClick={() => this.resetBorrados()}>Reset Borrados</button>
+                <button className="boton" onClick={()=>this.verMasPelis()} >Mas peliculas</button>
+                <button className="boton" onClick={() => this.resetOriginales()}>Reset Originales</button>
+                <button className="boton" onClick={() => this.resetBorrados()}>Reset Borrados</button>
                 </div>
             </>
         )

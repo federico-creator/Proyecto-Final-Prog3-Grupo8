@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import "./Filtrado.css"
 
 
 class Filtrado extends Component{
@@ -28,7 +29,6 @@ class Filtrado extends Component{
         console.log(this.state.personajes);
         return(
             <form className="filtro" onChange={(e)=>this.evitarSubmit(e)}>
-                <label>Filtrar Peliculas</label>
                 <input type="text" name= "name" onChange={(e)=>this.cambios(e)} value={this.state.filter}  />
             </form> 
             
