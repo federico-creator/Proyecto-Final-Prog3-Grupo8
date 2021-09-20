@@ -48,6 +48,10 @@
     cursor: pointer;
 }
 
+.cargando{
+    color: wheat;
+}
+
 @media (max-width: 768px){
     .boton{
         font-size: 1rem;

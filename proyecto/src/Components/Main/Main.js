@@ -142,20 +142,25 @@ class Tarjetas extends Component{
                 
                    {
                         this.state.cargando === false ?
-                          <img src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
+                        <p className="cargando"><i class="fas fa-spinner fa-spin"> </i>cargando</p>:
                         this.state.peliculas.map((pelicula) => 
                     <Tarjeta 
                     caracteristicas = {pelicula}
                     key={ pelicula.id} 
                     display = {this.state.display}
-                    borrarPelicula={(id) => this.borrarPelicula(id)}/> )}
+                    borrarPelicula={(id) => this.borrarPelicula(id)}/> )
+                    
+                    }
                 </div>
 
+                    
+                   {
+                        this.state.cargando === false ? "":
                 <div className="botones">
-                <button className="boton" onClick={()=>this.verMasPelis()} >Mas peliculas</button>
-                <button className="boton" onClick={() => this.resetOriginales()}>Reset Originales</button>
-                <button className="boton" onClick={() => this.resetBorrados()}>Reset Borrados</button>
-                </div>
+                    <button className="boton" onClick={()=>this.verMasPelis()} >Mas peliculas</button>
+                    <button className="boton" onClick={() => this.resetOriginales()}>Reset Originales</button>
+                    <button className="boton" onClick={() => this.resetBorrados()}>Reset Borrados</button>
+                </div>}
             </>
         )
     }
