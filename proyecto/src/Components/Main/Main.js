@@ -109,10 +109,10 @@ class Tarjetas extends Component{
 
   descendente(){
     let filtradas= []
-    let pelicualasAscendentes = this.state.peliculas.map((pelicula)=>pelicula.title)
-    pelicualasAscendentes.sort()
-    pelicualasAscendentes.reverse()
-    pelicualasAscendentes.map((pelicula)=>(
+    let pelicualasDescendentes = this.state.peliculas.map((pelicula)=>pelicula.title)
+    pelicualasDescendentes.sort()
+    pelicualasDescendentes.reverse()
+    pelicualasDescendentes.map((pelicula)=>(
       filtradas= filtradas.concat(this.state.peliculas.filter((peliculas) => peliculas.title.includes(pelicula)))
     ))
   this.setState({
