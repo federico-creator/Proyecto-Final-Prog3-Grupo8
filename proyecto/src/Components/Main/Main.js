@@ -142,7 +142,7 @@ class Tarjetas extends Component{
                 
                    {
                         this.state.cargando === false ?
-                          <img src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
+                          <img className="cargando"src="https://tenor.com/view/cargando-gif-7991979" alt="cargando..."/>:  
                         this.state.peliculas.map((pelicula) => 
                     <Tarjeta 
                     caracteristicas = {pelicula}

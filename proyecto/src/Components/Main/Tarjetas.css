@@ -5,6 +5,9 @@
     align-items: flex-start;
     background-color: black;
 }
+.cargando{
+    color: white;
+}
 
 .lista{
     width: 100%;
